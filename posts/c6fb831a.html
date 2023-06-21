@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基本的SQL语言学习（MySQL）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL学习">
+<meta property="og:url" content="http://example.com/posts/c6fb831a.html">
+<meta property="og:site_name" content="学习 &amp; 工作">
+<meta property="og:description" content="基本的SQL语言学习（MySQL）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-15T08:07:19.000Z">
+<meta property="article:modified_time" content="2023-06-19T08:14:25.689Z">
+<meta property="article:author" content="STico">
+<meta property="article:tag" content="3">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/c6fb831a.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MySQL学习 | 学习 & 工作</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学习 & 工作</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/c6fb831a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="STico">
+      <meta itemprop="description" content="永远相信美好的事情即将发生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习 & 工作">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-15 16:07:19" itemprop="dateCreated datePublished" datetime="2023-06-15T16:07:19+08:00">2023-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-19 16:14:25" itemprop="dateModified" datetime="2023-06-19T16:14:25+08:00">2023-06-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>基本的SQL语言学习（MySQL）</strong></p>
+<span id="more"></span>
+
+<h1 id="SQL的基本定义及概念"><a href="#SQL的基本定义及概念" class="headerlink" title="SQL的基本定义及概念"></a>SQL的基本定义及概念</h1><p><strong>数据库（DataBase）</strong>：存储数据的仓库，数据有组织的进行存储。</p>
+<p><strong>数据库管理系统（DBMS）</strong>：操纵和管理数据库的大型软件。</p>
+<p><strong>SQL</strong>：操作关系型数据库的编程语言。</p>
+<p><strong>关系型数据库（RDBMS）</strong>：建立在关系模型基础上，由多张相互连接的二维表组成的数据库</p>
+<p>基础使用方法：通过cmd输入mysql -r root -p进入mysql页面进行操作 或 运行MySQL command line Client - Unicode</p>
+<p><strong>SQL分类</strong>：</p>
+<table>
+<thead>
+<tr>
+<th><strong>DDL</strong></th>
+<th><strong>数据定义语言</strong></th>
+<th><strong>定义数据库对象（数据库、表、字段）</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DML</strong></td>
+<td><strong>数据操作语言</strong></td>
+<td><strong>对数据库表中数据增删改</strong></td>
+</tr>
+<tr>
+<td><strong>DQL</strong></td>
+<td><strong>数据查询语言</strong></td>
+<td><strong>查询数据库表中的记录</strong></td>
+</tr>
+<tr>
+<td><strong>DCL</strong></td>
+<td><strong>数据控制语言</strong></td>
+<td><strong>创建数据库用户，控制数据库的访问权限</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="DDL语句"><a href="#DDL语句" class="headerlink" title="DDL语句"></a>DDL语句</h1><p>语句后面注意 “ ; ”	，	[…]部分表示选写内容	，	comment ‘…’ 为注释内容</p>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><ul>
+<li>查询所有数据库：<strong>show database;</strong></li>
+<li>查询当前数据库：<strong>select database();</strong></li>
+<li>创建数据库：<strong>create database [if not exists] 数据库名;</strong></li>
+<li>删除数据库：<strong>drop database [if not exists] 数据库名;</strong></li>
+<li>使用数据库：<strong>use 数据库名;</strong></li>
+</ul>
+<h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><ul>
+<li>修改表名：<strong>alter table 表名 rename to 新表名;</strong></li>
+<li>删除表：<strong>drop table [if exists] 表名</strong></li>
+<li>删除指定表，并重新创建该表（初始化该表）：<strong>truncate table 表名;</strong></li>
+</ul>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ul>
+<li>查询当前数据库所有表：<strong>show tables;</strong></li>
+<li>查询表结构：<strong>desc 表名;</strong></li>
+<li>查询指定表的建表语句：<strong>show create table 表名;</strong></li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><ul>
+<li>添加字段：<strong>alter table 表名 add 字段名 数据类型;</strong></li>
+<li>修改数据类型：<strong>alter table 表名 modify 字段名 新的数据类型;</strong></li>
+<li>修改字段名和字段类型：<strong>alter table 表名 change 旧字段名 新字段名 数据类型;</strong></li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ul>
+<li>删除字段：<strong>alter table 表名 drop 字段名;</strong></li>
+</ul>
+<hr>
+<h1 id="DML语句"><a href="#DML语句" class="headerlink" title="DML语句"></a>DML语句</h1><h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><ul>
+<li>给指定字段添加数据：<strong>insert into 表名(字段名1,字段名2,…) values (值1,值2,…);</strong></li>
+<li>给全部字段添加数据：<strong>insert into 表名 values (值1,值2,…);</strong></li>
+<li>批量添加数据：<strong>insert into 表名(字段名1,字段名2,…) values (值1,值2,…);</strong>  &#x2F;<em>一行</em>&#x2F;</li>
+<li>​						 <strong>insert into 表名 values (值1,值2,…),(值1,值2,…),(值1,值2,…);</strong>  &#x2F;<em>多行</em>&#x2F;</li>
+</ul>
+<p>插入数据时，指定的字段顺序需要与值的顺序是一一对应的。</p>
+<p>字符串和日期型数据应该包含在引号中。</p>
+<p>插入的数据大小，应该在字段的规定范围内（满足对应的数据类型和数据范围）。</p>
+<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><ul>
+<li><strong>update 表名 set 字段名1&#x3D;值1,字段名2&#x3D;值2,… [where 条件];</strong></li>
+</ul>
+<p>修改语句的条件可有可无，若没有where条件，则会修改整张表的所有数据。</p>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><ul>
+<li><strong>delete from 表名 [where 条件];</strong></li>
+</ul>
+<p>删除语句的条件可有可无，若没有where条件，则会删除整张表的所有数据。</p>
+<p>delete语句不能删除某个字段的值（可以用update）。</p>
+<hr>
+<h1 id="DQL语句"><a href="#DQL语句" class="headerlink" title="DQL语句"></a>DQL语句</h1><h2 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h2><ul>
+<li>查询多个字段：<strong>select 字段1,字段2,… from 表名;</strong></li>
+<li>查询全部字段：<strong>select * from 表名;</strong></li>
+<li>设置别名：<strong>select 字段1[as 别名1],字段2[as 别名2],… from 表名;</strong></li>
+<li>去除重复记录：<strong>select distinct 字段列表 from 表名;</strong></li>
+</ul>
+<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><ul>
+<li><strong>select 字段列表 from 表名 where 条件列表;</strong></li>
+</ul>
+<p>例：查询姓名为两个字的员工信息select * from employee where name like ‘__’;</p>
+<p>​		查询身份证号最后一位是X的员工信息select * from employee where idcard like ‘%X’;</p>
+<p>​		或 select * from employee where idcard like ‘________________<em>X’ (17个’</em>‘)</p>
+<table>
+<thead>
+<tr>
+<th>比较运算符</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt;</td>
+<td align="left">大于</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td align="left">大于等于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td align="left">小于</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td align="left">小于等于</td>
+</tr>
+<tr>
+<td>&#x3D;</td>
+<td align="left">等于</td>
+</tr>
+<tr>
+<td>&lt;&gt; 或 !&#x3D;</td>
+<td align="left">不等于</td>
+</tr>
+<tr>
+<td>between…and…</td>
+<td align="left">介于范围之内（between 小 and 大）</td>
+</tr>
+<tr>
+<td>in(…)</td>
+<td align="left">在in之内的列表中的值，满足一个即可</td>
+</tr>
+<tr>
+<td>like 占位符</td>
+<td align="left">模糊匹配（_匹配单个字符，%匹配任意个字符）</td>
+</tr>
+<tr>
+<td>is null</td>
+<td align="left">判断是否为空</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>逻辑运算符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and 或 &amp;&amp;</td>
+<td>并且（多个条件同时成立）</td>
+</tr>
+<tr>
+<td>or 或 ||</td>
+<td>或者（多个条件任意一个成立）</td>
+</tr>
+<tr>
+<td>not 或 ！</td>
+<td>非，不是</td>
+</tr>
+</tbody></table>
+<h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><ul>
+<li><strong>select 聚合函数(字段列表) from 表名;</strong></li>
+</ul>
+<p>定义：将一列数据作为一个整体，进行纵向计算</p>
+<p>null值不参与所有聚合函数的运算</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count</td>
+<td>统计数量</td>
+</tr>
+<tr>
+<td>max</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>平均值</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>求和</td>
+</tr>
+</tbody></table>
+<h2 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h2><ul>
+<li><strong>select 字段列表 from 表名 [where 条件] group by 分组字段名 [having 分组后过滤条件];</strong></li>
+</ul>
+<h2 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h2><ul>
+<li><strong>select 字段列表 from 表名 order by 字段1,排序方式1,字段2,排序方式2,…;</strong></li>
+</ul>
+<p>排序方式有：ASC升序(默认)、DESC降序</p>
+<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><ul>
+<li><strong>select 字段列表 from 表名 limit 起始索引,查询记录数;</strong></li>
+</ul>
+<p>起始索引从0开始，起始索引&#x3D;(查询页码 - 1) * 每页显示记录数</p>
+<p>如果查询的是第一页数据，起始索引可以省略</p>
+<h2 id="DQL语句执行顺序"><a href="#DQL语句执行顺序" class="headerlink" title="DQL语句执行顺序"></a>DQL语句执行顺序</h2><ol>
+<li>from 表名列表</li>
+<li>where 条件列表</li>
+<li>group by 分组字段列表</li>
+<li>having 分组后条件列表</li>
+<li>select 字段列表</li>
+<li>order by 排序字段列表</li>
+<li>limit 分页参数</li>
+</ol>
+<hr>
+<h1 id="DCL语句"><a href="#DCL语句" class="headerlink" title="DCL语句"></a>DCL语句</h1><p>数据控制语言，用来管理数据库用户、控制数据库的访问权限。</p>
+<table>
+<thead>
+<tr>
+<th>权限（常用）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>all(all privileges)</td>
+<td>所有权限</td>
+</tr>
+<tr>
+<td>select</td>
+<td>查询数据</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>插入数据</td>
+</tr>
+<tr>
+<td>update</td>
+<td>修改数据</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除数据</td>
+</tr>
+<tr>
+<td>alter</td>
+<td>修改表</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>删除数据库&#x2F;表&#x2F;视图</td>
+</tr>
+<tr>
+<td>create</td>
+<td>创建数据库&#x2F;表</td>
+</tr>
+</tbody></table>
+<h2 id="管理用户"><a href="#管理用户" class="headerlink" title="管理用户"></a>管理用户</h2><ul>
+<li>查询用户：use mysql;  &#x3D;&gt;  <strong>select * from user;</strong></li>
+<li>创建用户：<strong>create user ‘user name‘@’host name’ identified by ‘password’;</strong></li>
+<li>修改用户密码：<strong>alter user ‘user name‘@’host name’ identified with mysql_native_password by ‘new password’;</strong></li>
+<li>删除用户：<strong>drop user ‘user name‘@’host name’;</strong></li>
+</ul>
+<h2 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h2><ul>
+<li>查询权限：<strong>show grants for ‘user name‘@’host name’;</strong></li>
+<li>授予权限：<strong>grant 权限列表 on 数据库名.表名 to ‘user name‘@’host name’;</strong></li>
+<li>撤销权限：<strong>revoke 权限列表 on 数据库名.表名 from ‘user name‘@’host name’;</strong></li>
+</ul>
+<hr>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><table>
+<thead>
+<tr>
+<th>函数（常用）</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>concat(S1, S2, S3, … ,Sn)</td>
+<td>字符串拼接，将S1…Sn拼接成一个字符串</td>
+</tr>
+<tr>
+<td>lower(str)</td>
+<td>将字符串str全部转为小写</td>
+</tr>
+<tr>
+<td>upper(str)</td>
+<td>将字符串str全部转为大写</td>
+</tr>
+<tr>
+<td>lpad(str, n, pad)</td>
+<td>左填充，用字符串pad对str的左边进行填充，达到n个字符串长度</td>
+</tr>
+<tr>
+<td>rpad(str, n, pad)</td>
+<td>右填充，用字符串pad对str的右边进行填充，达到n个字符串长度</td>
+</tr>
+<tr>
+<td>trim(str)</td>
+<td>去掉字符串头部和尾部的空格</td>
+</tr>
+<tr>
+<td>substring(str, start, len)</td>
+<td>返回从字符串str从start位置起的len个长度的字符串</td>
+</tr>
+</tbody></table>
+<p>例：study数据库的employee表中将员工编号workno更改，将编号前补齐’0’以达到五位数编号</p>
+<p>答：update employee set wordno &#x3D; lpad(workno, 5, ‘0’);</p>
+<hr>
+<h2 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h2><table>
+<thead>
+<tr>
+<th>函数（常用）</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ceil(x)</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>floor(x)</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>mod(x, y)</td>
+<td>返回x&#x2F;y的模（整除后的余数）</td>
+</tr>
+<tr>
+<td>rand()</td>
+<td>返回0~1内的随机数</td>
+</tr>
+<tr>
+<td>round(x, y)</td>
+<td>求参数x的四舍五入的值，保留y位小数</td>
+</tr>
+</tbody></table>
+<p>例：使用数据库的函数，实现随机生成6位验证码</p>
+<p>答：lpad(round(select rand() * 1000000, 0), 6, ‘0’);</p>
+<p>此方法运用了round()函数，替换成向上或向下取整函数依然可以完成，lpad或rpad同理。</p>
+<hr>
+<h2 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>curdate()</td>
+<td>返回当前日期</td>
+</tr>
+<tr>
+<td>curtime()</td>
+<td>返回当前时间</td>
+</tr>
+<tr>
+<td>now()</td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td>year(date)</td>
+<td>获取指定date的年份</td>
+</tr>
+<tr>
+<td>month(date)</td>
+<td>获取指定date的月份</td>
+</tr>
+<tr>
+<td>day(date)</td>
+<td>获取指定date的日期</td>
+</tr>
+<tr>
+<td>date_add(date, interval expr type)</td>
+<td>计算date加expr type后对应的时间,expr表示数值，type表示类型如年月日</td>
+</tr>
+<tr>
+<td>datediff(date1, date2)</td>
+<td>计算date1 和 date2之间相隔的天数</td>
+</tr>
+</tbody></table>
+<p>函数举例：date_add(now(), interval 90 day) &#x3D;&#x3D;&gt;&gt; 2022-07-08 18:54:37</p>
+<p>函数举例：datediff(‘2022-4-9’, ‘2022-7-1’) &#x3D;&#x3D;&gt;&gt; -83</p>
+<p>例：根据study数据库的employee表，计算所有员工入职时间，用天数表示，并按天数降序排序</p>
+<p>答：select name, datediff(curdate(), entrydate) from employee order by datediff(curdate(), entrydate) desc;</p>
+<hr>
+<h2 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>if(value, t, f)</td>
+<td>如果value为true，则返回t，否则返回f</td>
+</tr>
+<tr>
+<td>ifnull(value1, value2)</td>
+<td>如果value1不为空，返回value1，否则返回value2</td>
+</tr>
+<tr>
+<td>case when [val1] then [res1] … else [default] end</td>
+<td>如果val1为true，返回res1，…否则返回default默认值</td>
+</tr>
+<tr>
+<td>case [expr] when [val1] then [res1] … else [default] end</td>
+<td>如果expr的值等于val1，返回res1，…否则返回default默认值</td>
+</tr>
+</tbody></table>
+<p>例：根据study数据库的score表，将学生成绩置换成’优秀’&gt;&#x3D;85,60&#x3D;&lt;’及格’&#x3D;&lt;85,’不及格’&lt;60</p>
+<p>答：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select</span><br><span class="line">    id,</span><br><span class="line">    name,</span><br><span class="line">    (case when math &gt;= 85 then &#x27;优秀&#x27; when math &lt; 60 then &#x27;不及格&#x27; else &#x27;及格&#x27; end),</span><br><span class="line">    (case when english &gt;= 85 then &#x27;优秀&#x27; when english &lt; 60 then &#x27;不及格&#x27; else &#x27;及格&#x27; end),</span><br><span class="line">    (case when chinese &gt;= 85 then &#x27;优秀&#x27; when chinese &lt; 60 then &#x27;不及格&#x27; else &#x27;及格&#x27; end)</span><br><span class="line">from score;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><h2 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h2><p>概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。</p>
+<p>目的：保证数据库中数据的正确、有效性和完整性。</p>
+<p>分类：</p>
+<table>
+<thead>
+<tr>
+<th>约束</th>
+<th>描述</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非空约束</td>
+<td>限制该字段的数据不能为null</td>
+<td>not null</td>
+</tr>
+<tr>
+<td>唯一约束</td>
+<td>保证该字段的所有数据都是唯一、不重复的</td>
+<td>unique</td>
+</tr>
+<tr>
+<td>主键约束</td>
+<td>主键是一行数据的唯一标识，要求非空且唯一</td>
+<td>primary key</td>
+</tr>
+<tr>
+<td>默认约束</td>
+<td>保存数据时，如果未指定该字段的值，则采用默认值</td>
+<td>default</td>
+</tr>
+<tr>
+<td>检查约束</td>
+<td>保证字段值满足某一个条件</td>
+<td>check</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>用来让两张表的数据之间建立连接，保证数据的一致性和完整性</td>
+<td>foreign key</td>
+</tr>
+</tbody></table>
+<p>注意：约束是作用于表中字段上的，可以在创建表&#x2F;修改表的时候添加约束。</p>
+<p>例：</p>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table user</span><br><span class="line">(</span><br><span class="line"> id int primary key auto_increment comment &#x27;主键&#x27;,</span><br><span class="line"> name varchar(10) not null unique comment &#x27;姓名&#x27;,</span><br><span class="line"> age int check (age&gt;0 &amp;&amp; age&lt;=120) comment &#x27;年龄&#x27;,</span><br><span class="line"> status char(1) default &#x27;1&#x27; comment &#x27;状态&#x27;,</span><br><span class="line"> gender char(1) comment &#x27;性别&#x27;</span><br><span class="line">)comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h2><h3 id="基本定义-1"><a href="#基本定义-1" class="headerlink" title="基本定义"></a>基本定义</h3><p>概念：外键用来让两张表的数据之间建立连接，从而保证数据的一致性和完整性。</p>
+<p>注意：在数据库层面，未建立外键关联的两张表之间通过外键约束，是无法保证数据的一致性和完整性的。</p>
+<hr>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>添加外键：</p>
+<ul>
+<li><strong>create table 表名(</strong></li>
+<li>​		<strong>字段名		数据类型,</strong></li>
+<li>​		<strong>……			 ……</strong></li>
+<li>​		<strong>[constraint] [外键名称] foreign key (外键字段名) references 主表(主表列名)</strong></li>
+<li><strong>);</strong></li>
+</ul>
+<p>或：</p>
+<ul>
+<li><strong>alter table 表名 add constraint 外键名称 foreign key(外键字段名) references 主表(主表字段名);</strong></li>
+</ul>
+<p>删除外键：</p>
+<ul>
+<li><strong>alter table 表名 drop foreign key 外键名称;</strong></li>
+</ul>
+<hr>
+<h3 id="删除-x2F-更新行为"><a href="#删除-x2F-更新行为" class="headerlink" title="删除&#x2F;更新行为"></a>删除&#x2F;更新行为</h3><ul>
+<li><strong>alter table 表名 add constraint 外键名称 foreign key(外键字段名) references 主表(主表字段名) on update cascade on delete cascade;</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>no action</td>
+<td>当在父表中删除&#x2F;更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除&#x2F;更新(与restrict一致)</td>
+</tr>
+<tr>
+<td>restrict</td>
+<td>当在父表中删除&#x2F;更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除&#x2F;更新(与no action一致)</td>
+</tr>
+<tr>
+<td>cascade</td>
+<td>当在父表中删除&#x2F;更新对应记录时，首先检查该记录是否有对应外键，如果有，则也删除&#x2F;更新外键在子表中的记录</td>
+</tr>
+<tr>
+<td>set null</td>
+<td>当在父表中删除&#x2F;更新对应记录时，首先检查该记录是否有对应外键，如果有则设置子表中该外键值为null(这就要求该外键允许取null)</td>
+</tr>
+<tr>
+<td>set default</td>
+<td>父表有变更时，子表将外键列设置成一个默认的值(innodb不支持)</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h1><h2 id="多表关系"><a href="#多表关系" class="headerlink" title="多表关系"></a>多表关系</h2><p>项目开发中，在进行数据库表结构设计时，会根据业务需求及业务模块之间的关系，分析并设计表结构，由于业务之间相互关联，所以各个表结构之间也存在着各种联系，基本上分为三种：一对多、多对多、一对一。</p>
+<h3 id="多对多关系"><a href="#多对多关系" class="headerlink" title="多对多关系"></a>多对多关系</h3><p>实现：建立第三张中间表，中间至少包含两个外键，分别关联两方主键</p>
+<p>常见多对多关系如：学生与课程</p>
+
+
+<h3 id="一对一关系"><a href="#一对一关系" class="headerlink" title="一对一关系"></a>一对一关系</h3><p>关系：一对一关系，多用于单标拆分，将一张表的基础字段放在一张表中，其他详情字段放在另一张表中。</p>
+<p>实现：在任意一方加入外键，关联另外一方的主键，并且<strong>设置外键为唯一的(UNIQUE)</strong></p>
+<h2 id="多表查询分类"><a href="#多表查询分类" class="headerlink" title="多表查询分类"></a>多表查询分类</h2><p>定义：指从多张表中查询数据</p>
+<p><strong>连接查询：</strong></p>
+<p>内连接：相当于查询A、B交集部分数据</p>
+<p>外连接：	</p>
+<ul>
+<li>左外连接：查询左表所有数据，以及两张表交集部分数据</li>
+<li>右外连接：查询右表所有数据，以及两张表交集部分数据</li>
+</ul>
+<p>自连接：当前表与自身的连接查询，自连接必须使用表别名</p>
+<p>子查询</p>
+<h2 id="多表查询语句"><a href="#多表查询语句" class="headerlink" title="多表查询语句"></a>多表查询语句</h2><h3 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h3><p>隐式内连接：<strong>select 字段列表 from 表1, 表2 where 条件…;</strong></p>
+<p>显式内连接：<strong>select 字段列表 from 表1 [inner] join 表2 on 连接条件…;</strong></p>
+<h3 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h3><p>查询表1的所有数据 包含表1和表2交集部分的数据)：</p>
+<p><strong>select 字段列表 from 表1 left [outer] join 表2 on 条件…;</strong></p>
+<p>右外连接(相当于查询表2的所有数据 包含表1和表2交集部分的数据)：</p>
+<p><strong>select 字段列表 from 表1 right [outer] join 表2 on 条件…;</strong></p>
+<h3 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h3><p><strong>select 字段列表 from 表A 别名A join 表A 别名B on 条件…;</strong></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p>SQL语句中嵌套select语句，称为嵌套查询，又称子查询</p>
+<p><strong>select * from t1 where column1&#x3D; (select column1 from t2);</strong></p>
+<p>子查询外部的语句可以是insert&#x2F;update&#x2F;delete&#x2F;select的任何一个</p>
+<p>根据子查询结果不同，分为：</p>
+<ul>
+<li>标量子查询(子查询结果为单个值，常用的操作符：&#x3D;&#x3D;、&lt;&gt;、&gt;、&gt;&#x3D;、&lt;、&lt;&#x3D;)</li>
+<li>列子查询(子查询结果为一列，常用的操作符：in、not in、any、some、all)</li>
+<li>行子查询(子查询结果为一行，常用的操作符：&#x3D;、&lt;&gt;、in、not in)</li>
+<li>表子查询(子查询结果为多行多列，常用的操作符：in)</li>
+</ul>
+<p>根据子查询位置，分为：where之后、from之后、select之后</p>
+<hr>
+<h1 id="联合查询-union"><a href="#联合查询-union" class="headerlink" title="联合查询-union"></a>联合查询-union</h1><p>对于union查询，就是把多次查询的结果合并起来，形成一个新的查询结果集。</p>
+<p>对于联合查询的多张表的列数必须保持一致，字段类型也需要保持一致</p>
+<p>union all会将全部的数据直接合并在一起输出，union会对合并之后的数据去重再输出</p>
+<p><strong>select 字段列表 from 表A …</strong></p>
+<p><strong>union [all]</strong></p>
+<p><strong>select 字段列表 from 表B …;</strong></p>
+<hr>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务是一组操作的集合，它是一个不可分割的工作单位，事务会把所有的操作作为一个整体一起向系统提交或撤销操作请求，即这些操作要么同时成功，要么同时失败。</p>
+<h2 id="事务操作"><a href="#事务操作" class="headerlink" title="事务操作"></a>事务操作</h2><p>查看&#x2F;设置事务提交方式：</p>
+<p><strong>select @@autocommit;</strong></p>
+<p><strong>set @@autocommit &#x3D; 0;</strong>  ## 切换为手动提交</p>
+<p>提交事务：<strong>commit;</strong></p>
+<p>回滚事务：<strong>rollback;</strong></p>
+<h2 id="事务四大特性ACID"><a href="#事务四大特性ACID" class="headerlink" title="事务四大特性ACID"></a>事务四大特性ACID</h2><ul>
+<li>原子性：事务是不可分割的最小操作单元，要么全部成功，要么全部失败。</li>
+<li>一致性：事务完成时，必须使所有的数据都保持一致状态。</li>
+<li>隔离性：数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。</li>
+<li>持久性：事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。</li>
+</ul>
+<h2 id="并发事务问题"><a href="#并发事务问题" class="headerlink" title="并发事务问题"></a>并发事务问题</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>脏读</td>
+<td>一个事务读到另外一个事务还没有提交的数据</td>
+</tr>
+<tr>
+<td>不可重复读</td>
+<td>一个事务先后读取同一条记录，但两次读取的数据不同</td>
+</tr>
+<tr>
+<td>幻读</td>
+<td>一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时又发现这行数据</td>
+</tr>
+</tbody></table>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">脏读</th>
+<th align="center">不可重复读</th>
+<th align="center">幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">read uncommitted</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">read committed</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">repeatable read</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">serializable</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>原创不易~蟹蟹老大~！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="STico 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="STico 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/3/" rel="tag"># 3</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/1eb58338.html" rel="prev" title="hexo使用方法及命令">
+      <i class="fa fa-chevron-left"></i> hexo使用方法及命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/c386cf1b.html" rel="next" title="Python爬虫">
+      Python爬虫 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89%E5%8F%8A%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">SQL的基本定义及概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">DDL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">数据库操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.1.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">2.2.2.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4"><span class="nav-number">2.2.3.</span> <span class="nav-text">删除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DML%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">DML语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">3.2.</span> <span class="nav-text">修改数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">3.3.</span> <span class="nav-text">删除数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DQL%E8%AF%AD%E5%8F%A5"><span class="nav-number">4.</span> <span class="nav-text">DQL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.1.</span> <span class="nav-text">基本查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.2.</span> <span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.4.</span> <span class="nav-text">分组查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.5.</span> <span class="nav-text">排序查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.6.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">4.7.</span> <span class="nav-text">DQL语句执行顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DCL%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.</span> <span class="nav-text">DCL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7"><span class="nav-number">5.1.</span> <span class="nav-text">管理用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"><span class="nav-number">5.2.</span> <span class="nav-text">权限控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">字符串函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">6.2.</span> <span class="nav-text">数值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="nav-number">6.3.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%87%BD%E6%95%B0"><span class="nav-number">6.4.</span> <span class="nav-text">流程控制函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F"><span class="nav-number">7.</span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="nav-number">7.1.</span> <span class="nav-text">基本定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="nav-number">7.2.</span> <span class="nav-text">外键约束</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89-1"><span class="nav-number">7.2.1.</span> <span class="nav-text">基本定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">7.2.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-x2F-%E6%9B%B4%E6%96%B0%E8%A1%8C%E4%B8%BA"><span class="nav-number">7.2.3.</span> <span class="nav-text">删除&#x2F;更新行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="nav-number">8.</span> <span class="nav-text">多表查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">8.1.</span> <span class="nav-text">多表关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB"><span class="nav-number">8.1.1.</span> <span class="nav-text">多对多关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E5%85%B3%E7%B3%BB"><span class="nav-number">8.1.2.</span> <span class="nav-text">一对一关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB"><span class="nav-number">8.2.</span> <span class="nav-text">多表查询分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="nav-number">8.3.</span> <span class="nav-text">多表查询语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="nav-number">8.3.1.</span> <span class="nav-text">内连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="nav-number">8.3.2.</span> <span class="nav-text">外连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%BF%9E%E6%8E%A5"><span class="nav-number">8.3.3.</span> <span class="nav-text">自连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">8.3.4.</span> <span class="nav-text">子查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2-union"><span class="nav-number">9.</span> <span class="nav-text">联合查询-union</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">10.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E6%93%8D%E4%BD%9C"><span class="nav-number">10.1.</span> <span class="nav-text">事务操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7ACID"><span class="nav-number">10.2.</span> <span class="nav-text">事务四大特性ACID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98"><span class="nav-number">10.3.</span> <span class="nav-text">并发事务问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">10.4.</span> <span class="nav-text">事务隔离级别</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">STico</p>
+  <div class="site-description" itemprop="description">永远相信美好的事情即将发生</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">STico</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
