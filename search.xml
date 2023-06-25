@@ -632,6 +632,11 @@
       </tags>
   </entry>
   <entry>
+    <title>Next主题博客美化</title>
+    <url>/posts/e23f9c5e.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Python学习</title>
     <url>/posts/e39e2a4e.html</url>
     <content><![CDATA[<p><strong>Python的学习记录</strong></p>
@@ -796,75 +801,6 @@
 ]]></content>
       <tags>
         <tag>5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python爬虫</title>
-    <url>/posts/c386cf1b.html</url>
-    <content><![CDATA[<p><strong>Python爬虫学习</strong></p>
-<span id="more"></span>
-
-<h1 id="requests模块案例一-搜狗首页数据提取"><a href="#requests模块案例一-搜狗首页数据提取" class="headerlink" title="requests模块案例一(搜狗首页数据提取)"></a>requests模块案例一(搜狗首页数据提取)</h1><p>requests模块：python中原生的一款基于网络请求的模块，功能非常强大，简单便携，效率极高</p>
-<p>作用：模拟浏览器发请求</p>
-<p>注意从URL下右键”检查”，查看 请求URL、请求方式、Content-Type的格式等，以及”响应”中的字典或列表格式</p>
-<ul>
-<li><strong>爬取搜狗首页的页面数据</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 爬取搜狗首页页面数据</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 指定url</span></span><br><span class="line">    url = <span class="string">&#x27;https://www.sogou.com/&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发起请求</span></span><br><span class="line">    <span class="comment"># response接收get方法返回的响应对象</span></span><br><span class="line">    response = requests.get(url=url)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取响应数据 .text返回的是字符串形式的响应数据</span></span><br><span class="line">    page_text = response.text</span><br><span class="line">    <span class="built_in">print</span>(page_text)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 持久化存储</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./sogou.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(page_text)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;爬取数据结束！&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>爬取结果：(源码臭长)</p>
-<img src="/posts/c386cf1b/sogou.png" class="" title="搜狗首页html数据">
-
-<hr>
-<h1 id="requests模块案例二-网页采集器"><a href="#requests模块案例二-网页采集器" class="headerlink" title="requests模块案例二(网页采集器)"></a>requests模块案例二(网页采集器)</h1><ul>
-<li><strong>简单的网页采集器</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># UA伪装：将对应的User-Agent封装到一个字段中</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    url = <span class="string">&#x27;https://www.sogou.com/web?&#x27;</span></span><br><span class="line">    <span class="comment"># 处理url携带的参数query:封装到字典中</span></span><br><span class="line">    kw = <span class="built_in">input</span>(<span class="string">&quot;输入一个query:&quot;</span>)</span><br><span class="line">    param = &#123;</span><br><span class="line">        <span class="string">&#x27;query&#x27;</span>: kw</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 对指定的url发起的请求对应的url是携带参数的，并且请求过程中处理了参数</span></span><br><span class="line">    response = requests.get(url=url, params=param, headers=headers)</span><br><span class="line"></span><br><span class="line">    page_text = response.text</span><br><span class="line">    fileName = kw + <span class="string">&#x27;.html&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(fileName, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(page_text)</span><br><span class="line">    <span class="built_in">print</span>(fileName, <span class="string">&#x27;保存成功！&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点：</strong></p>
-<p><strong>UA</strong>：User-Agent（请求载体的身份标识）</p>
-<p><strong>UA检测</strong>(反爬)：门户网站的服务器会检测对应请求的载体身份标识，如果检测到请求的载体身份标识为某一款浏览器，则说明该请求是一个正常的请求。但如果检测到请求的载体身份标识不是基于某一款浏览器的，则表示该请求为不正常的请求(爬虫)则服务器端就可能拒绝该次请求。</p>
-<p><strong>UA伪装</strong>(反反爬)：让爬虫对应的请求载体身份标识伪装成某一款浏览器</p>
-<p><strong>实现：</strong></p>
-<p>控制台输入一个query关键字，类似搜索引擎中的搜索输入框，输入关键字后对应生成它的html文件，文件下保存该关键字搜索的结果的html形式源码。</p>
-<p>例：</p>
-<p>query：武汉    &#x3D;&#x3D;&gt;&gt;  武汉.html生成，浏览器打开武汉.html有：</p>
-<img src="/posts/c386cf1b/wuhan.png" class="" title="网页提取结果">
-
-<hr>
-<h1 id="requests模块案例三-破解百度翻译"><a href="#requests模块案例三-破解百度翻译" class="headerlink" title="requests模块案例三(破解百度翻译)"></a>requests模块案例三(破解百度翻译)</h1><ul>
-<li><strong>编译器版本的”百度翻译”</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">post_url = <span class="string">&#x27;https://fanyi.baidu.com/sug&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># UA伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">word = <span class="built_in">input</span>(<span class="string">&quot;输入您要查询的内容：&quot;</span>)</span><br><span class="line"><span class="comment"># post请求参数处理（同get请求一致）</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;kw&#x27;</span>: word</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 请求发送</span></span><br><span class="line">response = requests.post(url=post_url, data=data, headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取响应数据:json方法返回的是obj（如果确认响应数据是json类型才可以使用.json方法）</span></span><br><span class="line"><span class="comment"># Content-Type: application/json</span></span><br><span class="line">dic_obj = response.json()</span><br><span class="line"><span class="comment"># print</span></span><br><span class="line"></span><br><span class="line">fileName = word + <span class="string">&#x27;.json&#x27;</span></span><br><span class="line">fp = <span class="built_in">open</span>(fileName, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">json.dump(dic_obj, fp=fp, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;OVER&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>实现：</strong></p>
-<p>控制台提示输入查询的内容后，自动生成对应内容的json文件，json文件下内容对应如下</p>
-<img src="/posts/c386cf1b/%E7%BF%BB%E8%AF%91.png" class="" title="编译器同屏翻译">
-
-<p><strong>功能</strong>：可以控制台输入某单词生成json文件实现对该单词的中文翻译</p>
-<p><strong>问题</strong>：测试过程中输入长句英文是无法正确输出结果</p>
-<hr>
-<h1 id="requests模块案例四-豆瓣电影信息提取"><a href="#requests模块案例四-豆瓣电影信息提取" class="headerlink" title="requests模块案例四(豆瓣电影信息提取)"></a><strong>requests模块案例四(豆瓣电影信息提取)</strong></h1><ul>
-<li>豆瓣喜剧电影排行榜中电影基本信息的捕获</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/j/chart/top_list?&#x27;</span></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;24&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;interval_id&#x27;</span>: <span class="string">&#x27;100:90&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;action&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;start&#x27;</span>: <span class="string">&#x27;0&#x27;</span>,  <span class="comment"># 从库中的第几部电影去取</span></span><br><span class="line">    <span class="string">&#x27;limit&#x27;</span>: <span class="string">&#x27;20&#x27;</span>  <span class="comment"># 一次取出的个数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># UA伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url=url, params=param, headers=headers)</span><br><span class="line"></span><br><span class="line">list_data = response.json()</span><br><span class="line"></span><br><span class="line">fp = <span class="built_in">open</span>(<span class="string">&#x27;./douban.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">json.dump(list_data, fp=fp, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;OVER&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>实现：</p>
-<p>字典中start和limit可更改(见注释)，运行生成douban.json文件，显示取出limit数量个电影的基本信息</p>
-<hr>
-<h1 id="requests模块案例五-查询KFC餐厅地址"><a href="#requests模块案例五-查询KFC餐厅地址" class="headerlink" title="requests模块案例五(查询KFC餐厅地址)"></a>requests模块案例五(查询KFC餐厅地址)</h1><ul>
-<li>检索国内某城市所有KFC餐厅的地址等信息</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://www.kfc.com.cn/kfccda/ashx/GetStoreList.ashx?op=keyword&#x27;</span></span><br><span class="line"></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&#x27;cname&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;pid&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;keyword&#x27;</span>: <span class="string">&#x27;襄阳&#x27;</span>,  <span class="comment"># keyword处可改动，变化所要查询的国内城市名称</span></span><br><span class="line">    <span class="string">&#x27;pageIndex&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;pageSize&#x27;</span>: <span class="string">&#x27;10&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># UA伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url=url, params=param, headers=headers)</span><br><span class="line"></span><br><span class="line">page_text = response.text</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./地址查询.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(page_text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;OVER&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>实现：</strong></p>
-<p>功能类似于官网<a href="http://www.kfc.com.cn/kfccda/storelist/index.aspx">肯德基餐厅信息查询 (kfc.com.cn)</a>下”餐厅关键字”查询，控制台输入关键字，即可生成html文件呈现该关键字城市下所有KFC餐厅的地址信息</p>
-<p>例：</p>
-<p>城市：襄阳</p>
-<img src="/posts/c386cf1b/%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2.png" class="" title="查询对应城市KFC餐厅地址信息">
-]]></content>
-      <tags>
-        <tag>4</tag>
       </tags>
   </entry>
   <entry>
@@ -1186,6 +1122,75 @@
 ]]></content>
       <tags>
         <tag>6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python爬虫</title>
+    <url>/posts/c386cf1b.html</url>
+    <content><![CDATA[<p><strong>Python爬虫学习</strong></p>
+<span id="more"></span>
+
+<h1 id="requests模块案例一-搜狗首页数据提取"><a href="#requests模块案例一-搜狗首页数据提取" class="headerlink" title="requests模块案例一(搜狗首页数据提取)"></a>requests模块案例一(搜狗首页数据提取)</h1><p>requests模块：python中原生的一款基于网络请求的模块，功能非常强大，简单便携，效率极高</p>
+<p>作用：模拟浏览器发请求</p>
+<p>注意从URL下右键”检查”，查看 请求URL、请求方式、Content-Type的格式等，以及”响应”中的字典或列表格式</p>
+<ul>
+<li><strong>爬取搜狗首页的页面数据</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 爬取搜狗首页页面数据</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 指定url</span></span><br><span class="line">    url = <span class="string">&#x27;https://www.sogou.com/&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发起请求</span></span><br><span class="line">    <span class="comment"># response接收get方法返回的响应对象</span></span><br><span class="line">    response = requests.get(url=url)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取响应数据 .text返回的是字符串形式的响应数据</span></span><br><span class="line">    page_text = response.text</span><br><span class="line">    <span class="built_in">print</span>(page_text)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 持久化存储</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./sogou.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(page_text)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;爬取数据结束！&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>爬取结果：(源码臭长)</p>
+<img src="/posts/c386cf1b/sogou.png" class="" title="搜狗首页html数据">
+
+<hr>
+<h1 id="requests模块案例二-网页采集器"><a href="#requests模块案例二-网页采集器" class="headerlink" title="requests模块案例二(网页采集器)"></a>requests模块案例二(网页采集器)</h1><ul>
+<li><strong>简单的网页采集器</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># UA伪装：将对应的User-Agent封装到一个字段中</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    url = <span class="string">&#x27;https://www.sogou.com/web?&#x27;</span></span><br><span class="line">    <span class="comment"># 处理url携带的参数query:封装到字典中</span></span><br><span class="line">    kw = <span class="built_in">input</span>(<span class="string">&quot;输入一个query:&quot;</span>)</span><br><span class="line">    param = &#123;</span><br><span class="line">        <span class="string">&#x27;query&#x27;</span>: kw</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 对指定的url发起的请求对应的url是携带参数的，并且请求过程中处理了参数</span></span><br><span class="line">    response = requests.get(url=url, params=param, headers=headers)</span><br><span class="line"></span><br><span class="line">    page_text = response.text</span><br><span class="line">    fileName = kw + <span class="string">&#x27;.html&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(fileName, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(page_text)</span><br><span class="line">    <span class="built_in">print</span>(fileName, <span class="string">&#x27;保存成功！&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点：</strong></p>
+<p><strong>UA</strong>：User-Agent（请求载体的身份标识）</p>
+<p><strong>UA检测</strong>(反爬)：门户网站的服务器会检测对应请求的载体身份标识，如果检测到请求的载体身份标识为某一款浏览器，则说明该请求是一个正常的请求。但如果检测到请求的载体身份标识不是基于某一款浏览器的，则表示该请求为不正常的请求(爬虫)则服务器端就可能拒绝该次请求。</p>
+<p><strong>UA伪装</strong>(反反爬)：让爬虫对应的请求载体身份标识伪装成某一款浏览器</p>
+<p><strong>实现：</strong></p>
+<p>控制台输入一个query关键字，类似搜索引擎中的搜索输入框，输入关键字后对应生成它的html文件，文件下保存该关键字搜索的结果的html形式源码。</p>
+<p>例：</p>
+<p>query：武汉    &#x3D;&#x3D;&gt;&gt;  武汉.html生成，浏览器打开武汉.html有：</p>
+<img src="/posts/c386cf1b/wuhan.png" class="" title="网页提取结果">
+
+<hr>
+<h1 id="requests模块案例三-破解百度翻译"><a href="#requests模块案例三-破解百度翻译" class="headerlink" title="requests模块案例三(破解百度翻译)"></a>requests模块案例三(破解百度翻译)</h1><ul>
+<li><strong>编译器版本的”百度翻译”</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">post_url = <span class="string">&#x27;https://fanyi.baidu.com/sug&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># UA伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">word = <span class="built_in">input</span>(<span class="string">&quot;输入您要查询的内容：&quot;</span>)</span><br><span class="line"><span class="comment"># post请求参数处理（同get请求一致）</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;kw&#x27;</span>: word</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 请求发送</span></span><br><span class="line">response = requests.post(url=post_url, data=data, headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取响应数据:json方法返回的是obj（如果确认响应数据是json类型才可以使用.json方法）</span></span><br><span class="line"><span class="comment"># Content-Type: application/json</span></span><br><span class="line">dic_obj = response.json()</span><br><span class="line"><span class="comment"># print</span></span><br><span class="line"></span><br><span class="line">fileName = word + <span class="string">&#x27;.json&#x27;</span></span><br><span class="line">fp = <span class="built_in">open</span>(fileName, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">json.dump(dic_obj, fp=fp, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;OVER&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现：</strong></p>
+<p>控制台提示输入查询的内容后，自动生成对应内容的json文件，json文件下内容对应如下</p>
+<img src="/posts/c386cf1b/%E7%BF%BB%E8%AF%91.png" class="" title="编译器同屏翻译">
+
+<p><strong>功能</strong>：可以控制台输入某单词生成json文件实现对该单词的中文翻译</p>
+<p><strong>问题</strong>：测试过程中输入长句英文是无法正确输出结果</p>
+<hr>
+<h1 id="requests模块案例四-豆瓣电影信息提取"><a href="#requests模块案例四-豆瓣电影信息提取" class="headerlink" title="requests模块案例四(豆瓣电影信息提取)"></a><strong>requests模块案例四(豆瓣电影信息提取)</strong></h1><ul>
+<li>豆瓣喜剧电影排行榜中电影基本信息的捕获</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/j/chart/top_list?&#x27;</span></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;24&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;interval_id&#x27;</span>: <span class="string">&#x27;100:90&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;action&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;start&#x27;</span>: <span class="string">&#x27;0&#x27;</span>,  <span class="comment"># 从库中的第几部电影去取</span></span><br><span class="line">    <span class="string">&#x27;limit&#x27;</span>: <span class="string">&#x27;20&#x27;</span>  <span class="comment"># 一次取出的个数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># UA伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url=url, params=param, headers=headers)</span><br><span class="line"></span><br><span class="line">list_data = response.json()</span><br><span class="line"></span><br><span class="line">fp = <span class="built_in">open</span>(<span class="string">&#x27;./douban.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">json.dump(list_data, fp=fp, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;OVER&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>实现：</p>
+<p>字典中start和limit可更改(见注释)，运行生成douban.json文件，显示取出limit数量个电影的基本信息</p>
+<hr>
+<h1 id="requests模块案例五-查询KFC餐厅地址"><a href="#requests模块案例五-查询KFC餐厅地址" class="headerlink" title="requests模块案例五(查询KFC餐厅地址)"></a>requests模块案例五(查询KFC餐厅地址)</h1><ul>
+<li>检索国内某城市所有KFC餐厅的地址等信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://www.kfc.com.cn/kfccda/ashx/GetStoreList.ashx?op=keyword&#x27;</span></span><br><span class="line"></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&#x27;cname&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;pid&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;keyword&#x27;</span>: <span class="string">&#x27;襄阳&#x27;</span>,  <span class="comment"># keyword处可改动，变化所要查询的国内城市名称</span></span><br><span class="line">    <span class="string">&#x27;pageIndex&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;pageSize&#x27;</span>: <span class="string">&#x27;10&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># UA伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url=url, params=param, headers=headers)</span><br><span class="line"></span><br><span class="line">page_text = response.text</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./地址查询.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(page_text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;OVER&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现：</strong></p>
+<p>功能类似于官网<a href="http://www.kfc.com.cn/kfccda/storelist/index.aspx">肯德基餐厅信息查询 (kfc.com.cn)</a>下”餐厅关键字”查询，控制台输入关键字，即可生成html文件呈现该关键字城市下所有KFC餐厅的地址信息</p>
+<p>例：</p>
+<p>城市：襄阳</p>
+<img src="/posts/c386cf1b/%E5%9C%B0%E5%9D%80%E6%9F%A5%E8%AF%A2.png" class="" title="查询对应城市KFC餐厅地址信息">
+]]></content>
+      <tags>
+        <tag>4</tag>
       </tags>
   </entry>
   <entry>
