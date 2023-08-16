@@ -7,8 +7,8 @@ http://example.com/posts/c386cf1b.html
 http://example.com/posts/c6fb831a.html
 http://example.com/
 http://example.com/tags/6/
-http://example.com/tags/7/
 http://example.com/tags/2/
+http://example.com/tags/7/
 http://example.com/tags/4/
 http://example.com/tags/5/
 http://example.com/tags/3/
