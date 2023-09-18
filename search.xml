@@ -766,7 +766,6 @@
 
 <p>登录函数 login() 传参： 用户名username， 密码password</p>
 <p>挂号函数 registration() 传参： 门诊患者病案号record_number， 挂号资源代码registration_resources_code</p>
-<p><video src="posts/e4f344ea/2023-09-18 13-25-20.mp4" position= "absolute" width="100%" height="100%" controls="controls"></video></p>
 <hr>
 ]]></content>
   </entry>
