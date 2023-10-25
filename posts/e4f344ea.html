@@ -31,8 +31,16 @@
 <meta property="og:image" content="http://example.com/posts/e4f344ea/Outpatient_doctor_station.png">
 <meta property="og:image" content="http://example.com/posts/e4f344ea/%E7%99%BB%E5%BD%95%E4%B8%BB%E9%A1%B5%E9%9D%A2.png">
 <meta property="og:image" content="http://example.com/posts/e4f344ea/%E7%99%BB%E5%BD%95%E5%AD%90%E9%A1%B5%E9%9D%A2.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/%E5%8C%BB%E7%94%9F%E7%9C%8B%E8%AF%8A%E9%A1%B5%E9%9D%A2.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/pickshell%E8%BE%93%E5%85%A5%E5%8C%BB%E5%98%B1.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E9%87%8D%E5%A4%8D%E5%BC%B9%E7%AA%97.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF%E5%BD%95%E5%85%A5.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E4%BF%9D%E5%AD%98%E9%87%8D%E5%A4%8D%E6%A0%A1%E9%AA%8C.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E4%BF%9D%E5%AD%98%E6%88%90%E5%8A%9F%E6%A0%A1%E9%AA%8C.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/pickshell%E8%BF%90%E8%A1%8C%E7%B3%BB%E7%BB%9F%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/posts/e4f344ea/pickshell%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF%E6%88%AA%E5%9B%BE.png">
 <meta property="article:published_time" content="2023-09-14T09:50:51.000Z">
-<meta property="article:modified_time" content="2023-10-20T09:55:24.493Z">
+<meta property="article:modified_time" content="2023-10-25T10:12:03.865Z">
 <meta property="article:author" content="STico">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/posts/e4f344ea/Outpatient_registration.png">
@@ -214,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-20 17:55:24" itemprop="dateModified" datetime="2023-10-20T17:55:24+08:00">2023-10-20</time>
+                <time title="修改时间：2023-10-25 18:12:03" itemprop="dateModified" datetime="2023-10-25T18:12:03+08:00">2023-10-25</time>
               </span>
 
           <br>
@@ -223,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>23k</span>
+              <span>31k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>21 分钟</span>
+              <span>28 分钟</span>
             </span>
 
         </div>
@@ -330,7 +338,7 @@
 <p>登录函数 login() 传参：driver，用户名username，密码password，登录角色xpath_role，登录地点xpath_location</p>
 <p>医嘱录入函数 outpatient_orders() 传参：driver，已有挂号患者patient_msg，pickshell药品order_insert，数量quantity，剂量dosage，用法，频次frequency，周期cycle</p>
 <hr>
-<h1 id="Webhis-门诊自定义多医嘱录入-流程测试脚本详解"><a href="#Webhis-门诊自定义多医嘱录入-流程测试脚本详解" class="headerlink" title="Webhis-门诊自定义多医嘱录入-流程测试脚本详解"></a>Webhis-门诊自定义多医嘱录入-流程测试脚本详解</h1><h2 id="前情摘要"><a href="#前情摘要" class="headerlink" title="前情摘要"></a>前情摘要</h2><p>​		该脚本利用登录、挂号、医嘱等函数，selenium、ActionChains、webdriver等将前面所展示的内容做了一个整合，以实现从编译器终端录入多种医嘱的效果，代码量将近四百行，多以调用函数的方式运行。</p>
+<h1 id="Webhis-门诊自定义多医嘱录入-流程测试脚本详解"><a href="#Webhis-门诊自定义多医嘱录入-流程测试脚本详解" class="headerlink" title="Webhis-门诊自定义多医嘱录入-流程测试脚本详解"></a>Webhis-门诊自定义多医嘱录入-流程测试脚本详解</h1><h2 id="前情摘要"><a href="#前情摘要" class="headerlink" title="前情摘要"></a>前情摘要</h2><p>​		该脚本利用登录、挂号、医嘱等函数，selenium、ActionChains、webdriver等将前面所展示的内容做了一个整合，以实现从编译器终端录入多种医嘱的效果，代码量将近四百行，多以调用函数的方式运行，总耗时大概三周的闲暇时间搞定。</p>
 <p>​		由于 宝鸡项目Web端 门诊医生站开立医嘱 会存在很多特殊情况，不同的医嘱类型、不同的维护、不同的页面参数，系统参数都会导致Web前端页面的效果不同，会出现不同的弹窗等，针对多种情况去做脚本的判断部分没有意义，故此脚本为UI自动化测试脚本的终章。</p>
 <p>​		以下详解部分，也将更详细的切分脚本的代码，附上更多的效果图，以便更好的理解其实现的流程及原理。</p>
 <hr>
@@ -402,97 +410,102 @@
 
 <img src="/posts/e4f344ea/%E7%99%BB%E5%BD%95%E5%AD%90%E9%A1%B5%E9%9D%A2.png" class="">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<hr>
+<h2 id="门诊多医嘱录入-函数模块-重"><a href="#门诊多医嘱录入-函数模块-重" class="headerlink" title="门诊多医嘱录入-函数模块 [重]"></a>门诊多医嘱录入-函数模块 [重]</h2><h3 id="整体结构概述"><a href="#整体结构概述" class="headerlink" title="整体结构概述"></a>整体结构概述</h3><p>医嘱录入的过程本身就是顺序执行到底的，所以这部分脚本代码也保持顺序执行的逻辑。本意就是想要设计一个能够自主任意的录入多次多种医嘱的脚本，所以设计了 函数嵌套的方式，以实现循环执行录入医嘱的函数，通过终端输入的方式，自主决定录入不同数量的医嘱、不同种类的医嘱。</p>
+<p>当然，编译器终端输入以实现可控制性的方法固然是最原始最笨的办法，因为在脚本执行的过程中，driver调用的浏览器窗口设定为最大化maxmize_window；而每次自定义选择医嘱时，又需要切出浏览器，在终端存值，会很影响感官。</p>
+<ul>
+<li>我能设想到的最理想的是，用前端方法设计一个大小合适且可拖动调整的小窗，同步编译器终端的功能，可通过小窗输入输出终端内容，并将该窗口置于可视桌面最前端，这样既能看到浏览器自动化运行的过程，又能快捷终端输入输出，也不会很影响视觉。这想法只能说以我当前能力是无法实现的了，以后如果有机会，可以拓展到其他工作项目的自动化脚本里去。</li>
+</ul>
+<p>多医嘱录入函数的框架大致如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">outpatient_orders</span>(<span class="params">driver, patient_msg</span>):</span><br><span class="line">    ...  <span class="comment"># 脚本进入医生看诊页面的代码执行</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">orders_entry_main</span>():</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">loop_entry</span>(<span class="params">entry</span>):</span><br><span class="line">            <span class="keyword">match</span> entry:</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;1&#x27;</span>: pickshell医嘱</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;2&#x27;</span>: 检验类医嘱</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;3&#x27;</span>: 检查类医嘱</span><br><span class="line">                <span class="keyword">case</span> _: 提示输入错误</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            entry = <span class="built_in">input</span>()</span><br><span class="line">            loop_entry(entry)</span><br><span class="line">            <span class="keyword">if</span> entry == <span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    orders_entry_main()</span><br><span class="line">outpatient_orders(driver, patient_msg)</span><br></pre></td></tr></table></figure>
+
+<p>函数嵌套方法：</p>
+<ul>
+<li>loop_entry()函数传参entry，通过match…case方法，读取entry的值，进而进行不同的case操作，以实现参数控制代码执行范围，自定义选择开立的医嘱类型</li>
+<li>orders_entry_main()函数通过while True无限循环调用loop_entry()函数，entry通过终端键盘input输入的方法传参给loop_entry()，输入字符’0’时跳出循环</li>
+<li>outpatient_orders()函数传参patient_msg，脚本进入到医生看诊页面后，选中对应挂号患者patient_msg，以为指定患者开立医嘱执行嵌套内的函数</li>
+</ul>
+<hr>
+<h3 id="脚本进入医生看诊页面"><a href="#脚本进入医生看诊页面" class="headerlink" title="脚本进入医生看诊页面"></a>脚本进入医生看诊页面</h3><img src="/posts/e4f344ea/%E5%8C%BB%E7%94%9F%E7%9C%8B%E8%AF%8A%E9%A1%B5%E9%9D%A2.png" class="">
+
+<p>① 展开大类主菜单，并进入门诊医生站对应的大类菜单：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-global-header-common-trigger&#x27;]&quot;</span>)  <span class="comment"># 展开大类菜单</span></span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click(item).perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@id=&#x27;root&#x27;]//*[@class=&#x27;ant-menu-submenu-title&#x27;]//*[text()=&#x27;门诊医生站&#x27;]&quot;</span>)  <span class="comment"># 大类菜单</span></span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>② 进入子类菜单，并进入医生看诊页面：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@id=&#x27;root&#x27;]//*[@class=&#x27;ant-menu-item ant-menu-item-selected&#x27;]&quot;</span>)  <span class="comment"># 子类菜单(门诊医生站)</span></span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click(item).perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;ant-tabs-nav-list&#x27;]//*[text()=&#x27;医生看诊&#x27;]&quot;</span>)  <span class="comment"># 进入&quot;医生看诊&quot;页面</span></span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click(item).perform()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;脚本已切换到 [门诊医生站] 页面&quot;</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>③ 选中患者，进入门诊医生站待录入医嘱：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//button[@class=&#x27;ant-btn ant-btn-link ant-btn-icon-only&#x27;]&quot;</span>)  <span class="comment"># 患者列表刷新</span></span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click().perform()</span><br><span class="line">driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line">driver.find_element(by=By.XPATH, value=patient_msg).click()  <span class="comment"># 选中患者列表对应挂号患者</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;已选中 门诊挂号患者[ %s ]&quot;</span> % patient_msg)</span><br><span class="line">time.sleep(<span class="number">5</span>)  <span class="comment"># 强制等待页面加载, 待患者信息、门诊医生站功能加载</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="pickshell医嘱录入功能的实现"><a href="#pickshell医嘱录入功能的实现" class="headerlink" title="pickshell医嘱录入功能的实现"></a>pickshell医嘱录入功能的实现</h3><img src="/posts/e4f344ea/pickshell%E8%BE%93%E5%85%A5%E5%8C%BB%E5%98%B1.png" class="">
+
+<p>如上图，以 medicine传参医嘱完整全称 定位到pickshell输入框。部分医嘱例如葡萄糖注射液，列表会显示名称带有“葡萄糖注射液”的所有医嘱，会出现不同浓度、不同规格、不同厂商等多种葡萄糖注射液医嘱，此处并不做特殊情况的考虑，均定位到列表内第一条医嘱并点击。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">medicine = <span class="built_in">input</span>(<span class="string">&quot;请输入所要开立的pickshell药品完整名称: &quot;</span>)</span><br><span class="line"></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-datapicker kt-datapicker-singleRow&#x27;]//*[@placeholder=&#x27;请输入&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click().send_keys(medicine).perform()</span><br><span class="line">time.sleep(<span class="number">3</span>)  <span class="comment"># 强制等待给检索医嘱列表的加载时间</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定位并选择目录列表第一条医嘱</span></span><br><span class="line">driver.find_element(By.XPATH, <span class="string">&#x27;//tr[@data-row-key=&quot;0&quot; and contains(@class, &quot;ant-table-row ant-table-row-level-0 kt-table-row-oddeven kt-row-selected-order-picker&quot;)]&#x27;</span>).click()</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<img src="/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E9%87%8D%E5%A4%8D%E5%BC%B9%E7%AA%97.png" class="">
+
+<p>如上图，医嘱落入医生站时有多个校验，医嘱重复校验弹窗就是其一。当该患者的医嘱列表存在相同医嘱，会出现并需要判断点击。故在脚本代码中使用try…except…方法同步进行校验。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;患者当前医嘱列表重复开立弹窗判断&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	wait = WebDriverWait(driver, <span class="number">10</span>)</span><br><span class="line">	wait.until(EC.presence_of_element_located((By.XPATH, <span class="string">&quot;//*[text()=&#x27;已经开立，是否继续？&#x27;]&quot;</span>)))</span><br><span class="line"></span><br><span class="line">	confirm_button = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[text()=&#x27;确定&#x27;]&quot;</span>)</span><br><span class="line">	confirm_button.click()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<img src="/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF%E5%BD%95%E5%85%A5.png" class="">
+
+<p>医嘱落入医生站后，则需要对其医嘱的信息进行手动的填写了，过程都是类似的，但是这部分内容一直存在历史bug，前端开发在此处放置的下拉框会出现异常跳转、光标回弹的问题。<strong>撰写此处脚本的时候，着实是见识到了水货开发的实力</strong>。。。当然脚本代码也用了最原始最简单的方法避免这些bug：time.sleep()设定强制等待、点击其他空白可定位位置以防止原本sendkeys的值消失、在前端光标自动回弹后再重复定位下一个元素重新存值。</p>
+<p>上述所说的前端bug问题具体为：光标定位到“剂量”框并存值后，切到下一个“用法”框时，光标会自动跳转回“剂量”框去；有时脚本在执行过程中，已向“用法”框存值后，切到其他输入框时，原存值会莫名消失等（此问题非必现，大多运行时正常，故脚本内并未做相关问题的解决方案；如果执行过程中复现此问题，只能重新录入或快速手动输入了）。。。</p>
+<ul>
+<li>“数量”输入框</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;----------数量----------&quot;&quot;&quot;</span></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@id=&#x27;orderQtyId1&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(<span class="string">&quot;3&quot;</span>).perform()  <span class="comment"># &#x27;数量&#x27;固定存值&#x27;3&#x27;</span></span><br><span class="line">driver.implicitly_wait(<span class="number">3</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“剂量”输入框</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;----------剂量----------&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># &#x27;剂量&#x27;框存在未知异常，无法定位元素</span></span><br><span class="line"><span class="comment"># 又因前端约束 医嘱落入列表后光标自动定位到&#x27;数量&#x27;框，故使用ActionChains方法模拟TAB操作跳到&#x27;用法&#x27;框</span></span><br><span class="line">actions = ActionChains(driver)</span><br><span class="line">actions.send_keys(Keys.TAB, Keys.TAB).perform()</span><br><span class="line">actions.send_keys(<span class="string">&quot;1&quot;</span>).perform()</span><br><span class="line">driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“用法”输入框</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;----------用法----------&quot;&quot;&quot;</span></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex4&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click().perform()</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 采用上述处理&#x27;剂量&#x27;框异常的方法后，又有未知原因 click定位到&#x27;用法&#x27;框后，光标会重新回到&#x27;剂量&#x27;框(前端代码问题)</span></span><br><span class="line"><span class="comment"># 故使用两次click定位&#x27;用法&#x27;框方法，来避免光标异常定位问题，经测试此方法有效</span></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex4&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click().perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex4&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(<span class="string">&quot;口服&quot;</span>).perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(Keys.ENTER).perform()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 未知原因 用法框send_key后仍会再弹出下拉框，故设计为传参后立刻点击一处不可编辑区别，强制退出该输入框</span></span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-global-header-common-logo-icon&#x27;]&quot;</span>).click()</span><br><span class="line">driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“频次”输入框</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;----------频次----------&quot;&quot;&quot;</span></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex5&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click().perform()</span><br><span class="line">driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex5&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(<span class="string">&quot;qd8&quot;</span>).perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(Keys.ENTER).perform()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 未知原因 频次框send_key后仍会再弹出下拉框，故设计为传参后立刻点击一处不可编辑区别，强制退出该输入框</span></span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-global-header-common-logo-icon&#x27;]&quot;</span>).click()</span><br><span class="line">driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“周期”输入框</li>
+</ul>
+<p>在录入数量、剂量、频次后，系统会自动换算出“周期”所需的值，脚本在此处为测试能否正常传值，所以也采取传入固定值的方式。使用send_keys全选CTRL + A以清除“周期”内原有值的方法未生效，换成for循环连续4次进行BACKSPACE操作代替。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;----------周期----------&quot;&quot;&quot;</span></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex6&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).click().perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex6&#x27;]&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(Keys.BACKSPACE).perform()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">item = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;kt-editable-cell tabIndex6&#x27;]&quot;</span>)</span><br><span class="line">webdriver.ActionChains(driver).move_to_element(item).send_keys(<span class="string">&quot;3&quot;</span>).perform()</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>医嘱保存</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;医嘱保存&quot;&quot;&quot;</span></span><br><span class="line">driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;diagnosisAnYang_secondLineItem_RITqA diagnosisAnYang_iconCursor_Jv_RO&#x27;]//*[text()=&#x27;保存&#x27;]&quot;</span>).click()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<img src="/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E4%BF%9D%E5%AD%98%E9%87%8D%E5%A4%8D%E6%A0%A1%E9%AA%8C.png" class="">
+
+<p>不光在开立医嘱时有医嘱重复校验，在最后保存医嘱列表时也会弹窗类似重复的校验。针对此类弹窗，采取相同方法，try…except…当定位到“强制保存”的文本，则点击此文本对应按钮，以确认关闭该校验弹窗。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;患者医嘱重复预警弹窗判断&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    confirm_button = driver.find_element(by=By.XPATH, value=<span class="string">&quot;//*[@class=&#x27;ant-modal-body&#x27;]//button[text()=&#x27;强制保存&#x27;]&quot;</span>)</span><br><span class="line">    webdriver.ActionChains(driver).move_to_element(confirm_button).click().perform()</span><br><span class="line">    driver.implicitly_wait(<span class="number">3</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<img src="/posts/e4f344ea/%E5%8C%BB%E5%98%B1%E4%BF%9D%E5%AD%98%E6%88%90%E5%8A%9F%E6%A0%A1%E9%AA%8C.png" class="">
+
+<p>上述所有录入医嘱的操作执行完毕后，要对所有医嘱进行保存才可退出，点击保存后需要物理等待程序加载、数据库存值，保存成功会有“医嘱保存成功”弹窗。</p>
+<p>针对该弹窗的定位抓取，终端print打印脚本执行结果是我认为有必要的，所以增加了此脚本代码形式的校验。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;医嘱保存成功弹窗校验&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    item = driver.find_element(By.XPATH, <span class="string">&quot;//*[text()=&#x27;医嘱保存成功&#x27;]&quot;</span>)</span><br><span class="line">    webdriver.ActionChains(driver).move_to_element(item).perform()</span><br><span class="line">    driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--- ATTENTION: 医嘱保存成功! ---&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> NoSuchElementException:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--- ATTENTION: 函数正常运行 但未成功保存医嘱，注意网络延迟并重试! ---&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>pickshell开立医嘱部分完整脚本运行截图：</strong></p>
+<img src="/posts/e4f344ea/pickshell%E8%BF%90%E8%A1%8C%E7%B3%BB%E7%BB%9F%E6%88%AA%E5%9B%BE.png" class="">
+
+<img src="/posts/e4f344ea/pickshell%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF%E6%88%AA%E5%9B%BE.png" class="">
+
+<hr>
+<h3 id="检验类医嘱录入功能的实现"><a href="#检验类医嘱录入功能的实现" class="headerlink" title="检验类医嘱录入功能的实现"></a>检验类医嘱录入功能的实现</h3>
     </div>
 
     
@@ -589,7 +602,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Driver%E7%9A%84%E5%B0%81%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Driver的封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">单例设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI-WEBHIS%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">UI-WEBHIS目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#driver-py"><span class="nav-number">1.3.</span> <span class="nav-text">driver.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function-py"><span class="nav-number">1.4.</span> <span class="nav-text">function.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.1.</span> <span class="nav-text">登录-函数模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E8%AF%8A%E6%80%A5%E6%8C%82%E5%8F%B7-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.2.</span> <span class="nav-text">门诊急挂号-函数模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E8%AF%8A%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">门诊医嘱录入-函数模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WPB%E9%80%89%E6%8B%A9%E6%82%A3%E8%80%85-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.4.</span> <span class="nav-text">WPB选择患者-函数模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webhis-%E9%97%A8%E8%AF%8A%E6%80%A5%E6%8C%82%E5%8F%B7-%E6%B5%81%E7%A8%8B%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">Webhis-门诊急挂号-流程测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#registration-py"><span class="nav-number">2.1.</span> <span class="nav-text">registration.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%AF%BC%E5%8C%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">所需导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">主函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webhis-%E9%97%A8%E8%AF%8A%E5%8D%95%E4%B8%AA%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E6%B5%81%E7%A8%8B%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">Webhis-门诊单个医嘱录入-流程测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#orders-entry-py"><span class="nav-number">3.1.</span> <span class="nav-text">orders_entry.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%AF%BC%E5%8C%85-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">所需导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">主函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webhis-%E9%97%A8%E8%AF%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%9A%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E6%B5%81%E7%A8%8B%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Webhis-门诊自定义多医嘱录入-流程测试脚本详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%83%85%E6%91%98%E8%A6%81"><span class="nav-number">4.1.</span> <span class="nav-text">前情摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%AF%BC%E5%8C%85-2"><span class="nav-number">4.2.</span> <span class="nav-text">所需导包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#driver%E7%9A%84%E8%B0%83%E7%94%A8%E5%8F%8A%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">driver的调用及设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97-1"><span class="nav-number">4.4.</span> <span class="nav-text">登录-函数模块</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Driver%E7%9A%84%E5%B0%81%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Driver的封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">单例设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI-WEBHIS%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">UI-WEBHIS目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#driver-py"><span class="nav-number">1.3.</span> <span class="nav-text">driver.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function-py"><span class="nav-number">1.4.</span> <span class="nav-text">function.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.1.</span> <span class="nav-text">登录-函数模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E8%AF%8A%E6%80%A5%E6%8C%82%E5%8F%B7-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.2.</span> <span class="nav-text">门诊急挂号-函数模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E8%AF%8A%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">门诊医嘱录入-函数模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WPB%E9%80%89%E6%8B%A9%E6%82%A3%E8%80%85-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.4.</span> <span class="nav-text">WPB选择患者-函数模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webhis-%E9%97%A8%E8%AF%8A%E6%80%A5%E6%8C%82%E5%8F%B7-%E6%B5%81%E7%A8%8B%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">Webhis-门诊急挂号-流程测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#registration-py"><span class="nav-number">2.1.</span> <span class="nav-text">registration.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%AF%BC%E5%8C%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">所需导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">主函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webhis-%E9%97%A8%E8%AF%8A%E5%8D%95%E4%B8%AA%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E6%B5%81%E7%A8%8B%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">Webhis-门诊单个医嘱录入-流程测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#orders-entry-py"><span class="nav-number">3.1.</span> <span class="nav-text">orders_entry.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%AF%BC%E5%8C%85-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">所需导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">主函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Webhis-%E9%97%A8%E8%AF%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%9A%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E6%B5%81%E7%A8%8B%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Webhis-门诊自定义多医嘱录入-流程测试脚本详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%83%85%E6%91%98%E8%A6%81"><span class="nav-number">4.1.</span> <span class="nav-text">前情摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%AF%BC%E5%8C%85-2"><span class="nav-number">4.2.</span> <span class="nav-text">所需导包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#driver%E7%9A%84%E8%B0%83%E7%94%A8%E5%8F%8A%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">driver的调用及设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97-1"><span class="nav-number">4.4.</span> <span class="nav-text">登录-函数模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%A8%E8%AF%8A%E5%A4%9A%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5-%E5%87%BD%E6%95%B0%E6%A8%A1%E5%9D%97-%E9%87%8D"><span class="nav-number">4.5.</span> <span class="nav-text">门诊多医嘱录入-函数模块 [重]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0"><span class="nav-number">4.5.1.</span> <span class="nav-text">整体结构概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E8%BF%9B%E5%85%A5%E5%8C%BB%E7%94%9F%E7%9C%8B%E8%AF%8A%E9%A1%B5%E9%9D%A2"><span class="nav-number">4.5.2.</span> <span class="nav-text">脚本进入医生看诊页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pickshell%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.5.3.</span> <span class="nav-text">pickshell医嘱录入功能的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E7%B1%BB%E5%8C%BB%E5%98%B1%E5%BD%95%E5%85%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.5.4.</span> <span class="nav-text">检验类医嘱录入功能的实现</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
