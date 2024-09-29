@@ -137,14 +137,14 @@
 
   
   <url>
-    <loc>http://example.com/tags/6/</loc>
+    <loc>http://example.com/tags/2/</loc>
     <lastmod>2024-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/2/</loc>
+    <loc>http://example.com/tags/6/</loc>
     <lastmod>2024-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -165,14 +165,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/5/</loc>
+    <loc>http://example.com/tags/3/</loc>
     <lastmod>2024-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/3/</loc>
+    <loc>http://example.com/tags/5/</loc>
     <lastmod>2024-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
